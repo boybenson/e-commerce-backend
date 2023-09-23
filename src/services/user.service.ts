@@ -1,18 +1,16 @@
-const users = [
-  {
-    name: "Benson Yeboah",
-    phone: "0546949655",
-    email: "ybenson96@gmail.com",
-    role: "admin",
-  },
-  {
-    name: "Isaac Gudu",
-    phone: "0546949627",
-    email: "bensony63@gmail.com",
-    role: "customer",
-  },
-];
+import User from "../models/user.js";
 
-export const getUsers = () => {
+export const getUsers = async () => {
+  const users = await User.findAll();
   return users;
+};
+
+export const createUser = async (args: any) => {
+  const newUser = await User.create({
+    email: "ben63@gmail.com",
+    name: "Be63",
+    phone: "0546949335",
+    role: "customer",
+    password: "testpassword",
+  });
 };

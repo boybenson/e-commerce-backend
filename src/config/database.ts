@@ -1,7 +1,7 @@
-const data = {
+const dbConfig = {
   development: {
     username: "postgres",
-    password: "",
+    password: "testpassword",
     database: "normalsgh",
     host: "127.0.0.1",
     dialect: "postgres",
@@ -22,4 +22,4 @@ const data = {
   },
 };
 
-export default data;
+export default dbConfig;

@@ -1,5 +1,5 @@
 import { DataTypes, Model, Optional } from "sequelize";
-import sequelizeConnection from "../config/connectDb.js";
+import { sequelizeConnection } from "./init.js";
 
 interface UserAttributes {
   id: number;

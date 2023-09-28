@@ -1,6 +1,5 @@
-import { bookResolver } from "./book.resolver.js";
 import { userResolver } from "./user.resolver.js";
 
-const resolverMap = [bookResolver, userResolver];
+const resolverMap = [userResolver];
 
 export default resolverMap;

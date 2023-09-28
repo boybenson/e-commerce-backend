@@ -1,4 +1,4 @@
-import { createUser, getUsers } from "../services/user.service.js";
+import { getUsers, signup } from "../services/user.service.js";
 
 export const userResolver = {
   Query: {
@@ -7,8 +7,8 @@ export const userResolver = {
     },
   },
   Mutation: {
-    createUser: (_, args) => {
-      return createUser(args);
+    signup: (_, args) => {
+      return signup(args);
     },
   },
 };

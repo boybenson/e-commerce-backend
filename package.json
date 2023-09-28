@@ -13,6 +13,7 @@
     "migrate": "npx sequelize-cli db:migrate"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.4",
     "@types/node": "^20.6.3",
     "sequelize-cli": "^6.6.1",
     "ts-node": "^10.9.1",
@@ -20,6 +21,8 @@
   },
   "dependencies": {
     "@apollo/server": "^4.9.3",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.3.1",
     "graphql": "^16.8.1",
     "pg": "^8.11.3",
     "pg-hstore": "^2.3.4",

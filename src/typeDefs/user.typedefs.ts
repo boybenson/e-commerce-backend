@@ -1,9 +1,17 @@
 export const userTypeDefs = `#graphql
   type User {
-    name: String
-    phone: String
+    name: String!
+    phone: String!
     email: String
-    role: String
+    role: String!
+  }
+
+  input UserSignupContent {
+    name: String!,
+    phone: String!,
+    password: String!
+    email: String, 
+    role: String!
   }
 
   type Query {
@@ -11,6 +19,6 @@ export const userTypeDefs = `#graphql
   }
 
   type Mutation {
-    createUser(name: String,phone: String, email: String, role: String): User
+    signup(content: UserSignupContent): User
 }
 `;

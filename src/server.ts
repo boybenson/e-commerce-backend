@@ -1,14 +1,14 @@
 import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@apollo/server/express4";
 import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHttpServer";
-import { startStandaloneServer } from "@apollo/server/standalone";
-import express, { Request, Response } from "express";
+import express from "express";
 import http from "http";
 import cors from "cors";
 import resolvers from "./graphql/resolvers/index.js";
 import typeDefs from "./graphql/typeDefs/index.js";
 import dbInit from "./models/init.js";
 import appConfig from "./config/appconfig.js";
+import authRouter from "./rest/routes/auth-route.js";
 
 interface MyContext {
   token?: String;
@@ -19,7 +19,6 @@ dbInit();
 const app = express();
 const httpServer = http.createServer(app);
 
-// const server = new ApolloServer({ typeDefs, resolvers });
 const server = new ApolloServer<MyContext>({
   typeDefs,
   resolvers,
@@ -37,11 +36,9 @@ app.use(
   })
 );
 
-app.get("/test", (req: Request, res: Response) => {
-  res.json({
-    message: "Hello world",
-  });
-});
+app.use(express.json());
+app.use(cors());
+app.use("/api/auth/", authRouter);
 
 await new Promise<void>((resolve) =>
   httpServer.listen({ port: appConfig.port }, resolve)

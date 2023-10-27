@@ -1,0 +1,40 @@
+export const productTypeDefs = `#graphql
+  type Product {
+    id: ID
+    name: String!
+    description: String!
+    price: Float!
+    qtyInStock: Float
+    photo: String
+    slug: String
+  }
+
+  input GetProductsContent{
+    id: ID
+    name: String
+    price: Float
+    qtyInStock: Float
+    slug: String
+  }
+
+  input ProductCreateContent{
+    name: String!
+    description: String!
+    price: Float!
+    photo: String
+    qtyInStock: Float
+  }
+
+  
+
+
+ 
+
+  type Query {
+    getProducts(content: GetProductsContent): [Product]
+  }
+
+  type Mutation {
+    createProduct(content:ProductCreateContent):Product
+}
+`;

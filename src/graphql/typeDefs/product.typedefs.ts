@@ -17,6 +17,11 @@ export const productTypeDefs = `#graphql
     slug: String
   }
 
+  input GetProductContent{
+    id:ID
+    slug: String
+  }
+
   input ProductCreateContent{
     name: String!
     description: String!
@@ -25,13 +30,9 @@ export const productTypeDefs = `#graphql
     qtyInStock: Float
   }
 
-  
-
-
- 
-
   type Query {
     getProducts(content: GetProductsContent): [Product]
+    getProduct(content:GetProductContent): Product
   }
 
   type Mutation {

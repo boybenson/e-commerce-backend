@@ -1,18 +1,17 @@
-# syntax=docker/dockerfile:1
-
-ARG NODE_VERSION=18.17.1
-
-FROM node:${NODE_VERSION}-alpine
-
-ENV NODE_ENV production
-
+FROM node:18-alpine
 
 WORKDIR /app
 
-USER node
-
 COPY . .
+
+COPY package.json .
+
+ENV PORT=8000
+
+RUN yarn install
 
 EXPOSE 8000
 
-CMD yarn start
+CMD ["yarn", "dev"]
+
+# "dev": "node --watch --loader ts-node/esm src/server.ts",

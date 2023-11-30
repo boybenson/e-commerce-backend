@@ -30,6 +30,10 @@ export const productTypeDefs = `#graphql
     qtyInStock: Float
   }
 
+  input DeleteProductContent{
+    id: ID
+  }
+
   type Query {
     getProducts(content: GetProductsContent): [Product]
     getProduct(content:GetProductContent): Product
@@ -37,5 +41,6 @@ export const productTypeDefs = `#graphql
 
   type Mutation {
     createProduct(content:ProductCreateContent):Product
+    deleteProduct(content: DeleteProductContent):Boolean
 }
 `;

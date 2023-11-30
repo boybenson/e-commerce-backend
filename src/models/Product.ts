@@ -25,7 +25,6 @@ class Product
   public photo: string;
   slug: string;
   public qtyInStock: number;
-  // timestamps!
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
 }
@@ -42,7 +41,7 @@ Product.init(
       allowNull: false,
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT("long"),
       allowNull: false,
     },
     price: {

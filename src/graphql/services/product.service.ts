@@ -19,10 +19,26 @@ export const getProducts = async (payload: any): Promise<any> => {
 
 export const createProduct = async (payload: any): Promise<any> => {
   const args = payload.content;
-  const slug = slugify(args.name, {
+
+  const slug = await slugify(args.name, {
     lower: true,
     strict: true,
   });
   const newProduct = await Product.create({ ...args, slug });
+
   return newProduct.dataValues;
+};
+
+export const deleteProduct = async (payload: any): Promise<any> => {
+  const { id } = payload.content;
+
+  const deletedProduct = await Product.destroy({
+    where: {
+      id,
+    },
+  });
+
+  console.log("deleted", deletedProduct);
+
+  return deletedProduct === 0 ? false : true;
 };

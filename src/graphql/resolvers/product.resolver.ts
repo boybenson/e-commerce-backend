@@ -1,5 +1,6 @@
 import {
   createProduct,
+  deleteProduct,
   getProduct,
   getProducts,
 } from "../services/product.service.js";
@@ -16,6 +17,10 @@ export const productResolver = {
   Mutation: {
     createProduct: (_: any, args: any) => {
       return createProduct(args);
+    },
+
+    deleteProduct: (_: any, args: any) => {
+      return deleteProduct(args);
     },
   },
 };
